@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F4F7FA">
+  <meta name="description" content="합성 풋웨어 생산 데이터로 시간별 계획·실적, 정지 원인과 가정 기반 개선 시나리오를 검토하는 독립 개인 데모.">
+  <title>Line Lens — 풋웨어 생산 손실 분석</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">분석 화면으로 건너뛰기</a>
+  <aside class="sidebar">
+    <a class="brand" href="#main" aria-label="Line Lens 처음으로">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 25h9l7-12h6l-3 12h9v6H6z"/><path d="M8 34h24"/></svg>
+      <span>Line<span class="brand-light">Lens</span><small>FOOTWEAR LEAN LAB</small></span>
+    </a>
+    <div class="sidebar-label">WORKSPACE / 01</div>
+    <nav aria-label="분석 단계">
+      <a href="#overview" class="nav-active"><span>01</span> 생산 흐름 읽기</a>
+      <a href="#diagnose"><span>02</span> 손실 원인 찾기</a>
+      <a href="#scenario"><span>03</span> 개선 가정 비교</a>
+      <a href="#evidence"><span>04</span> 검증 근거 남기기</a>
+    </nav>
+    <div class="sidebar-note"><span class="status-dot"></span> LOCAL DEMO<strong>현장을 위한 질문,<br>데이터에서 출발.</strong><p>창신 LEAN 직무를 염두에 둔 독립 개인 프로젝트</p></div>
+    <div class="sidebar-footer"><span>합성 데이터만 사용</span><span>회사 내부 자료 · 연동 없음</span><a href="README.md" target="_blank" rel="noopener">프로젝트 안내 ↗</a></div>
+  </aside>
+
+  <main id="main">
+    <header class="topbar"><div class="breadcrumb">운영 분석 <span>/</span> 풋웨어 생산 손실</div><div class="top-meta"><span class="synthetic-badge" id="data-badge">SYNTHETIC DATA</span><span>v1.0</span></div></header>
+    <section class="hero" id="overview">
+      <div><p class="eyebrow">PLAN → LOSS → PDCA</p><h1>생산 손실을 읽고,<br>검증할 개선안을 남깁니다.</h1><p class="hero-copy">시간별 계획·실적과 정지 원인을 연결해<br>같은 조건에서 개선 가능성을 검토하는 분석 실험실.</p></div>
+      <div class="process-card" aria-label="관측, 원인 분류, 가정 실험, 현장 검증의 흐름">
+        <div class="process-title">FROM FLOOR DATA TO A3 <span>4 STEPS</span></div>
+        <svg class="process-path" viewBox="0 0 370 150" role="img" aria-label="풋웨어 공정 흐름을 형상화한 네 단계 연결선"><path class="sole" d="M24 112C71 124 93 131 158 133S285 122 346 97C331 80 306 82 287 76C236 60 220 30 178 26C123 22 70 72 24 112Z"/><path class="route" d="M35 102C78 106 104 87 137 69S207 70 240 83S294 100 334 92"/><circle cx="35" cy="102" r="8"/><circle cx="137" cy="69" r="8"/><circle cx="240" cy="83" r="8"/><circle cx="334" cy="92" r="8"/></svg>
+        <div class="process-labels"><span><b>01</b> 관측</span><span><b>02</b> 원인</span><span><b>03</b> 가정</span><span><b>04</b> 검증</span></div>
+      </div>
+    </section>
+
+    <div class="dataset-strip"><div><span class="tiny-marker"></span><strong id="dataset-label">가상 생산 표본</strong><span id="dataset-summary">240행 · 3라인 · 10개 근무일 · 8시간</span></div><span id="date-range">2026.09.14 — 09.23</span></div>
+    <section class="filterbar" aria-label="분석 범위 선택">
+      <div class="filter-group"><label for="line-filter">생산 라인</label><select id="line-filter"><option value="all">전체 라인</option></select></div>
+      <div class="filter-group"><label for="model-filter">제품 모델</label><select id="model-filter"><option value="all">전체 모델</option></select></div>
+      <button id="lock-filter" class="lock-button" aria-pressed="false" title="라인과 모델을 고정해 같은 표본으로 관측값과 시나리오를 비교합니다."><span aria-hidden="true">⌑</span> 비교 범위 잠금</button>
+      <div class="filter-actions"><label for="csv-upload" class="button ghost upload-button">CSV 불러오기</label><input id="csv-upload" type="file" accept=".csv,text/csv"><button class="button ghost" id="sample-download" title="전체 합성 표본 CSV 내려받기">표본 CSV ↓</button><button class="text-button" id="reset-data">초기화</button></div>
+    </section>
+    <p class="data-message" id="data-message" role="status" aria-live="polite">원본 수치의 빈값·중복·범위 오류는 파일 전체를 거부합니다. 모든 비교는 동일한 필터를 사용합니다.</p>
+
+    <section class="kpi-grid" aria-label="관측 기준 핵심 지표">
+      <article class="kpi primary"><div class="kpi-title">계획 달성률 <span>관측 기준</span></div><div class="kpi-value" id="kpi-attainment">—</div><div class="kpi-track"><i id="attainment-track"></i></div><p id="kpi-plan-detail">총 생산 / 계획</p></article>
+      <article class="kpi"><div class="kpi-title">양품률 <span class="kpi-index">02</span></div><div class="kpi-value" id="kpi-quality">—</div><p id="kpi-quality-detail">양품 / 총 생산</p><span class="kpi-footnote">불량을 포함한 생산량 기준</span></article>
+      <article class="kpi"><div class="kpi-title">양품 / 배치 인시 <span class="kpi-index">03</span></div><div class="kpi-value" id="kpi-labor">—</div><p id="kpi-labor-detail">켤레 / 인시</p><span class="kpi-footnote">정지 시간을 포함한 배치 시간</span></article>
+      <article class="kpi"><div class="kpi-title">정규화 정지 시간 <span class="kpi-index">04</span></div><div class="kpi-value" id="kpi-downtime">—</div><p id="kpi-stop-detail">분 / 1,000켤레</p><span class="kpi-footnote">제품별 물량 차이 함께 확인</span></article>
+    </section>
+
+    <section class="analysis-grid" id="diagnose">
+      <article class="panel hourly-panel">
+        <div class="panel-heading"><div><p class="section-index">01 / HOURLY PLAN–ACTUAL</p><h2>어느 시간대에 계획을 놓쳤나</h2></div><span class="small-tag">클릭해 상세 확인</span></div>
+        <div class="chart-topline"><p id="hourly-context">동일 시간대의 선택 관측 합산</p><div class="legend"><span><i class="legend-plan"></i> 계획</span><span><i class="legend-actual"></i> 실제</span></div></div>
+        <div class="hourly-chart" id="hourly-chart" role="group" aria-label="시간별 계획과 실제 생산량. 각 시간 버튼을 선택하면 상세가 표시됩니다."></div>
+        <div class="hour-detail" id="hour-detail" aria-live="polite"></div>
+      </article>
+      <article class="panel pareto-panel">
+        <div class="panel-heading"><div><p class="section-index">02 / LOSS PARETO</p><h2>정지 시간을 만든 원인</h2></div><span class="unit-tag">단위: 분</span></div>
+        <div class="pareto-summary"><strong id="total-stop">—</strong><span>전체 정지 시간 <b id="top-reason-share">—</b></span></div>
+        <div id="pareto-chart" class="pareto-chart" role="group" aria-label="모든 정지 원인의 기여도와 누적 비율"></div>
+        <p class="chart-caption">모든 기여 원인 표시 · 누적 비율은 정지 분 기준<br>원인 선택 시 아래 시나리오에 반영됩니다.</p>
+      </article>
+    </section>
+
+    <section class="panel scenario-panel" id="scenario">
+      <div class="panel-heading"><div><p class="section-index">03 / COUNTERMEASURE WHAT-IF</p><h2>같은 조건에서, 정지를 줄일 수 있다면</h2></div><span class="simulation-tag">SIMULATED · 검증 전 가정</span></div>
+      <div class="scenario-layout">
+        <div class="scenario-controls"><label for="reason-select">개선 검토 원인</label><select id="reason-select"></select><div class="slider-label"><label for="reduction-slider">정지 시간 감축 가정</label><output id="reduction-value" for="reduction-slider">40<span>%</span></output></div><input type="range" id="reduction-slider" min="0" max="80" step="5" value="40"><div class="range-labels"><span>0% · 변화 없음</span><span>80% · 상한</span></div><div class="scenario-formula"><span>계산 가정</span>관측 가동 중 속도 × 회복 시간<br><small>추가 생산 ≤ 계획 미달분<br>행별 양품률·인원·배치 시간 유지</small></div></div>
+        <div class="scenario-comparison"><div class="comparison-label"><span id="comparison-scope">전체 라인 · 전체 모델</span><span class="same-sample">동일 표본 비교</span></div><div class="comparison-cards"><article class="observed-card"><span class="comparison-eyebrow">OBSERVED / 관측 기준</span><h3>계획 달성률</h3><strong id="baseline-attainment">—</strong><p id="baseline-production">총 생산 — 켤레</p></article><article class="projected-card"><span class="comparison-eyebrow">SIMULATED / 가정 적용</span><h3>계획 달성률</h3><strong id="projected-attainment">—</strong><p id="projected-production">총 생산 기대값 — 켤레</p></article></div><div class="scenario-deltas"><div><span>회복 시간 가정</span><strong id="recovered-minutes">—</strong></div><div><span>추가 양품 기대값</span><strong id="added-good">—</strong></div><div><span>양품 / 배치 인시</span><strong id="projected-labor">—</strong></div></div></div>
+      </div>
+      <div class="assumption-note"><span aria-hidden="true">i</span><p>개선 효과를 측정한 결과가 아닙니다. 수요·자재·전후 공정 병목과 품질 유지 여부는 현장 확인이 필요합니다. 제품 혼합에 따라 집계 양품률은 달라질 수 있습니다.<span id="unestimated-note"></span></p></div>
+    </section>
+
+    <section class="evidence-grid" id="evidence">
+      <article class="panel a3-panel"><div class="panel-heading"><div><p class="section-index">04 / A3 EVIDENCE</p><h2>분석을 현장 검증 질문으로</h2></div><span class="small-tag">AI 검토용 근거 묶음</span></div><div class="a3-steps"><div><span class="a3-number">P</span><div><h3>문제와 가설</h3><p id="a3-problem">—</p><p id="a3-hypothesis">—</p></div></div><div><span class="a3-number">D</span><div><h3>작은 개선 실험</h3><p id="a3-action">—</p></div></div><div><span class="a3-number">C·A</span><div><h3>효과 확인과 표준화</h3><p>동일 모델·인원·자재·수요 조건을 확보한 뒤 양품·불량·재작업·납기·안전을 함께 재측정합니다. 효과가 확인되면 표준 작업과 재발 점검 항목에 반영합니다.</p></div></div></div></article>
+      <article class="panel export-panel"><p class="section-index">REVIEW HANDOFF</p><h2>숫자와 가정을<br>함께 가져갑니다.</h2><p>필터, 지표 정의, 표본 지문, 관측값, 시뮬레이션, 검증 질문을 재현 가능한 파일로 저장합니다.</p><div class="export-actions"><button id="export-markdown" class="button solid">검토 보고서 .md ↓</button><button id="export-json" class="button bordered">전체 근거 .json ↓</button><button id="export-prompt" class="text-button">AI 검토 프롬프트 .txt ↓</button></div><div class="export-footnote"><span class="status-dot"></span>LLM / 외부 API 호출 없음<br>AI는 내보낸 근거를 검토하는 용도입니다.</div></article>
+    </section>
+
+    <section class="detail-section"><details><summary>계산 정의 · 유효성 검사 · 원본 데이터 확인 <span>+</span></summary><div class="details-content"><h3>같은 분모로 비교합니다</h3><dl id="definition-list"></dl><p id="invalid-policy"></p><p class="fingerprint" id="fingerprint-info"></p><div class="table-scroll"><table><caption>현재 필터의 관측 원본 · 최대 24행 미리보기 (전체 데이터는 CSV에서 확인)</caption><thead><tr><th scope="col">작업일</th><th scope="col">라인</th><th scope="col">모델</th><th scope="col">시각</th><th scope="col">계획</th><th scope="col">총 생산</th><th scope="col">양품</th><th scope="col">인원</th><th scope="col">배치 분</th><th scope="col">정지 분</th><th scope="col">정지 원인</th></tr></thead><tbody id="raw-table"></tbody></table></div><button class="button bordered" id="filtered-download">현재 필터 CSV ↓</button></div></details></section>
+    <footer class="main-footer"><span>LINE LENS / 개인 제작 데모</span><span>합성 데이터 기반 · 실제 회사 성과와 무관 · 개선 가정은 현장 검증 필요</span></footer>
+  </main>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

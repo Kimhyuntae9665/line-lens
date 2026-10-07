@@ -1,0 +1,10 @@
+import { writeFile } from 'node:fs/promises';
+import { sampleRows } from './sample.js';
+import { validateRows, toCSV, evidencePacket, packetMarkdown } from './engine.js';
+const rows = validateRows(sampleRows());
+const packet = evidencePacket(rows, { line: 'all', model: 'all' }, '자재 대기', 40);
+const comparisons = ['FLEX', 'CORE'].map(model => evidencePacket(rows, { line: 'all', model }, '자재 대기', 40));
+await writeFile(new URL('./sample.csv', import.meta.url), toCSV(rows), 'utf8');
+await writeFile(new URL('./results.json', import.meta.url), JSON.stringify({ generated_by: 'node generate-results.mjs', deterministic: true, main: packet, model_comparisons: comparisons }, null, 2) + '\n', 'utf8');
+await writeFile(new URL('./sample-evidence.md', import.meta.url), packetMarkdown(packet), 'utf8');
+console.log(JSON.stringify({ row_count: rows.length, fingerprint: packet.dataset_fingerprint, baseline: packet.baseline, simulation: packet.simulation }, null, 2));

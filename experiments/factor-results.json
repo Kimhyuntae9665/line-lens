@@ -1,0 +1,1043 @@
+[
+  {
+    "label": "기준",
+    "config": {
+      "seed": 20261007,
+      "model": "FLEX",
+      "materialReduction": 0,
+      "balanceReduction": 0,
+      "qualityGuard": false
+    },
+    "final": {
+      "minute": 480,
+      "producedPairs": 1250,
+      "goodPairs": 1191,
+      "rejectedPairs": 59,
+      "releasedPairs": 1400,
+      "wipPairs": 150,
+      "planPairs": 1440,
+      "attainmentPct": 86.80555555555556,
+      "qualityPct": 95.28,
+      "goodPairsPerPersonHour": 12.40625,
+      "downtimeMinutes": 99.51666666666667,
+      "stations": [
+        {
+          "id": "kit",
+          "name": "자재공급",
+          "cycleMinutes": 2.7,
+          "queueCapacity": 3,
+          "status": "running",
+          "progress": 0.2962962962962963,
+          "queue": [
+            "B138",
+            "B139",
+            "B140"
+          ],
+          "activeBatchId": "B137",
+          "completedBatches": 136,
+          "stopMinutes": 76.9,
+          "blockedMinutes": 35.1,
+          "starvedMinutes": 0
+        },
+        {
+          "id": "upper",
+          "name": "갑피준비",
+          "cycleMinutes": 2.9,
+          "queueCapacity": 3,
+          "status": "running",
+          "progress": 0.27586206896551724,
+          "queue": [
+            "B134",
+            "B135",
+            "B136"
+          ],
+          "activeBatchId": "B133",
+          "completedBatches": 132,
+          "stopMinutes": 0,
+          "blockedMinutes": 83.8,
+          "starvedMinutes": 12.6
+        },
+        {
+          "id": "lasting",
+          "name": "성형",
+          "cycleMinutes": 3.7,
+          "queueCapacity": 3,
+          "status": "running",
+          "progress": 0.21621621621621623,
+          "queue": [
+            "B130",
+            "B131",
+            "B132"
+          ],
+          "activeBatchId": "B129",
+          "completedBatches": 128,
+          "stopMinutes": 0,
+          "blockedMinutes": 0,
+          "starvedMinutes": 5.6
+        },
+        {
+          "id": "bonding",
+          "name": "접착",
+          "cycleMinutes": 3.05,
+          "queueCapacity": 3,
+          "status": "running",
+          "progress": 0.2622950819672131,
+          "queue": [],
+          "activeBatchId": "B128",
+          "completedBatches": 127,
+          "stopMinutes": 0,
+          "blockedMinutes": 0,
+          "starvedMinutes": 91.85
+        },
+        {
+          "id": "press",
+          "name": "압착",
+          "cycleMinutes": 3.1,
+          "queueCapacity": 3,
+          "status": "running",
+          "progress": 0.467741935483871,
+          "queue": [],
+          "activeBatchId": "B127",
+          "completedBatches": 126,
+          "stopMinutes": 22.616666666666667,
+          "blockedMinutes": 0,
+          "starvedMinutes": 65.33333333333333
+        },
+        {
+          "id": "inspect",
+          "name": "검사·포장",
+          "cycleMinutes": 2.5,
+          "queueCapacity": 3,
+          "status": "running",
+          "progress": 0.8200000000000001,
+          "queue": [],
+          "activeBatchId": "B126",
+          "completedBatches": 125,
+          "stopMinutes": 0,
+          "blockedMinutes": 0,
+          "starvedMinutes": 165.45
+        }
+      ],
+      "tokens": [
+        {
+          "id": "B138",
+          "stationIndex": 0,
+          "kind": "queue",
+          "queueIndex": 0,
+          "progress": 0
+        },
+        {
+          "id": "B139",
+          "stationIndex": 0,
+          "kind": "queue",
+          "queueIndex": 1,
+          "progress": 0
+        },
+        {
+          "id": "B140",
+          "stationIndex": 0,
+          "kind": "queue",
+          "queueIndex": 2,
+          "progress": 0
+        },
+        {
+          "id": "B137",
+          "stationIndex": 0,
+          "kind": "active",
+          "queueIndex": 0,
+          "progress": 0.2962962962962963
+        },
+        {
+          "id": "B134",
+          "stationIndex": 1,
+          "kind": "queue",
+          "queueIndex": 0,
+          "progress": 0
+        },
+        {
+          "id": "B135",
+          "stationIndex": 1,
+          "kind": "queue",
+          "queueIndex": 1,
+          "progress": 0
+        },
+        {
+          "id": "B136",
+          "stationIndex": 1,
+          "kind": "queue",
+          "queueIndex": 2,
+          "progress": 0
+        },
+        {
+          "id": "B133",
+          "stationIndex": 1,
+          "kind": "active",
+          "queueIndex": 0,
+          "progress": 0.27586206896551724
+        },
+        {
+          "id": "B130",
+          "stationIndex": 2,
+          "kind": "queue",
+          "queueIndex": 0,
+          "progress": 0
+        },
+        {
+          "id": "B131",
+          "stationIndex": 2,
+          "kind": "queue",
+          "queueIndex": 1,
+          "progress": 0
+        },
+        {
+          "id": "B132",
+          "stationIndex": 2,
+          "kind": "queue",
+          "queueIndex": 2,
+          "progress": 0
+        },
+        {
+          "id": "B129",
+          "stationIndex": 2,
+          "kind": "active",
+          "queueIndex": 0,
+          "progress": 0.21621621621621623
+        },
+        {
+          "id": "B128",
+          "stationIndex": 3,
+          "kind": "active",
+          "queueIndex": 0,
+          "progress": 0.2622950819672131
+        },
+        {
+          "id": "B127",
+          "stationIndex": 4,
+          "kind": "active",
+          "queueIndex": 0,
+          "progress": 0.467741935483871
+        },
+        {
+          "id": "B126",
+          "stationIndex": 5,
+          "kind": "active",
+          "queueIndex": 0,
+          "progress": 0.8200000000000001
+        }
+      ],
+      "reasonMinutes": [
+        {
+          "reason": "자재 공급 중단",
+          "minutes": 76.9
+        },
+        {
+          "reason": "압착 설비 정지",
+          "minutes": 22.616666666666667
+        },
+        {
+          "reason": "후공정 막힘",
+          "minutes": 118.9
+        },
+        {
+          "reason": "자재·전공정 대기",
+          "minutes": 340.8333333333333
+        }
+      ]
+    }
+  },
+  {
+    "label": "자재 대기만",
+    "config": {
+      "seed": 20261007,
+      "model": "FLEX",
+      "materialReduction": 60,
+      "balanceReduction": 0,
+      "qualityGuard": false
+    },
+    "final": {
+      "minute": 480,
+      "producedPairs": 1250,
+      "goodPairs": 1191,
+      "rejectedPairs": 59,
+      "releasedPairs": 1400,
+      "wipPairs": 150,
+      "planPairs": 1440,
+      "attainmentPct": 86.80555555555556,
+      "qualityPct": 95.28,
+      "goodPairsPerPersonHour": 12.40625,
+      "downtimeMinutes": 53.36666666666667,
+      "stations": [
+        {
+          "id": "kit",
+          "name": "자재공급",
+          "cycleMinutes": 2.7,
+          "queueCapacity": 3,
+          "status": "running",
+          "progress": 0.2962962962962963,
+          "queue": [
+            "B138",
+            "B139",
+            "B140"
+          ],
+          "activeBatchId": "B137",
+          "completedBatches": 136,
+          "stopMinutes": 30.75,
+          "blockedMinutes": 81.25,
+          "starvedMinutes": 0
+        },
+        {
+          "id": "upper",
+          "name": "갑피준비",
+          "cycleMinutes": 2.9,
+          "queueCapacity": 3,
+          "status": "running",
+          "progress": 0.27586206896551724,
+          "queue": [
+            "B134",
+            "B135",
+            "B136"
+          ],
+          "activeBatchId": "B133",
+          "completedBatches": 132,
+          "stopMinutes": 0,
+          "blockedMinutes": 93.7,
+          "starvedMinutes": 2.7
+        },
+        {
+          "id": "lasting",
+          "name": "성형",
+          "cycleMinutes": 3.7,
+          "queueCapacity": 3,
+          "status": "running",
+          "progress": 0.21621621621621623,
+          "queue": [
+            "B130",
+            "B131",
+            "B132"
+          ],
+          "activeBatchId": "B129",
+          "completedBatches": 128,
+          "stopMinutes": 0,
+          "blockedMinutes": 0,
+          "starvedMinutes": 5.6
+        },
+        {
+          "id": "bonding",
+          "name": "접착",
+          "cycleMinutes": 3.05,
+          "queueCapacity": 3,
+          "status": "running",
+          "progress": 0.2622950819672131,
+          "queue": [],
+          "activeBatchId": "B128",
+          "completedBatches": 127,
+          "stopMinutes": 0,
+          "blockedMinutes": 0,
+          "starvedMinutes": 91.85
+        },
+        {
+          "id": "press",
+          "name": "압착",
+          "cycleMinutes": 3.1,
+          "queueCapacity": 3,
+          "status": "running",
+          "progress": 0.467741935483871,
+          "queue": [],
+          "activeBatchId": "B127",
+          "completedBatches": 126,
+          "stopMinutes": 22.616666666666667,
+          "blockedMinutes": 0,
+          "starvedMinutes": 65.33333333333333
+        },
+        {
+          "id": "inspect",
+          "name": "검사·포장",
+          "cycleMinutes": 2.5,
+          "queueCapacity": 3,
+          "status": "running",
+          "progress": 0.8200000000000001,
+          "queue": [],
+          "activeBatchId": "B126",
+          "completedBatches": 125,
+          "stopMinutes": 0,
+          "blockedMinutes": 0,
+          "starvedMinutes": 165.45
+        }
+      ],
+      "tokens": [
+        {
+          "id": "B138",
+          "stationIndex": 0,
+          "kind": "queue",
+          "queueIndex": 0,
+          "progress": 0
+        },
+        {
+          "id": "B139",
+          "stationIndex": 0,
+          "kind": "queue",
+          "queueIndex": 1,
+          "progress": 0
+        },
+        {
+          "id": "B140",
+          "stationIndex": 0,
+          "kind": "queue",
+          "queueIndex": 2,
+          "progress": 0
+        },
+        {
+          "id": "B137",
+          "stationIndex": 0,
+          "kind": "active",
+          "queueIndex": 0,
+          "progress": 0.2962962962962963
+        },
+        {
+          "id": "B134",
+          "stationIndex": 1,
+          "kind": "queue",
+          "queueIndex": 0,
+          "progress": 0
+        },
+        {
+          "id": "B135",
+          "stationIndex": 1,
+          "kind": "queue",
+          "queueIndex": 1,
+          "progress": 0
+        },
+        {
+          "id": "B136",
+          "stationIndex": 1,
+          "kind": "queue",
+          "queueIndex": 2,
+          "progress": 0
+        },
+        {
+          "id": "B133",
+          "stationIndex": 1,
+          "kind": "active",
+          "queueIndex": 0,
+          "progress": 0.27586206896551724
+        },
+        {
+          "id": "B130",
+          "stationIndex": 2,
+          "kind": "queue",
+          "queueIndex": 0,
+          "progress": 0
+        },
+        {
+          "id": "B131",
+          "stationIndex": 2,
+          "kind": "queue",
+          "queueIndex": 1,
+          "progress": 0
+        },
+        {
+          "id": "B132",
+          "stationIndex": 2,
+          "kind": "queue",
+          "queueIndex": 2,
+          "progress": 0
+        },
+        {
+          "id": "B129",
+          "stationIndex": 2,
+          "kind": "active",
+          "queueIndex": 0,
+          "progress": 0.21621621621621623
+        },
+        {
+          "id": "B128",
+          "stationIndex": 3,
+          "kind": "active",
+          "queueIndex": 0,
+          "progress": 0.2622950819672131
+        },
+        {
+          "id": "B127",
+          "stationIndex": 4,
+          "kind": "active",
+          "queueIndex": 0,
+          "progress": 0.467741935483871
+        },
+        {
+          "id": "B126",
+          "stationIndex": 5,
+          "kind": "active",
+          "queueIndex": 0,
+          "progress": 0.8200000000000001
+        }
+      ],
+      "reasonMinutes": [
+        {
+          "reason": "자재 공급 중단",
+          "minutes": 30.75
+        },
+        {
+          "reason": "압착 설비 정지",
+          "minutes": 22.616666666666667
+        },
+        {
+          "reason": "후공정 막힘",
+          "minutes": 174.95
+        },
+        {
+          "reason": "자재·전공정 대기",
+          "minutes": 330.93333333333334
+        }
+      ]
+    }
+  },
+  {
+    "label": "성형 주기만",
+    "config": {
+      "seed": 20261007,
+      "model": "FLEX",
+      "materialReduction": 0,
+      "balanceReduction": 20,
+      "qualityGuard": false
+    },
+    "final": {
+      "minute": 480,
+      "producedPairs": 1400,
+      "goodPairs": 1332,
+      "rejectedPairs": 68,
+      "releasedPairs": 1440,
+      "wipPairs": 40,
+      "planPairs": 1440,
+      "attainmentPct": 97.22222222222221,
+      "qualityPct": 95.14285714285714,
+      "goodPairsPerPersonHour": 13.875,
+      "downtimeMinutes": 99.51666666666667,
+      "stations": [
+        {
+          "id": "kit",
+          "name": "자재공급",
+          "cycleMinutes": 2.7,
+          "queueCapacity": 3,
+          "status": "starved",
+          "progress": 0,
+          "queue": [],
+          "activeBatchId": null,
+          "completedBatches": 144,
+          "stopMinutes": 76.9,
+          "blockedMinutes": 0,
+          "starvedMinutes": 14.3
+        },
+        {
+          "id": "upper",
+          "name": "갑피준비",
+          "cycleMinutes": 2.9,
+          "queueCapacity": 3,
+          "status": "starved",
+          "progress": 0,
+          "queue": [],
+          "activeBatchId": null,
+          "completedBatches": 144,
+          "stopMinutes": 0,
+          "blockedMinutes": 0,
+          "starvedMinutes": 62.4
+        },
+        {
+          "id": "lasting",
+          "name": "성형",
+          "cycleMinutes": 2.966666666666667,
+          "queueCapacity": 3,
+          "status": "starved",
+          "progress": 0,
+          "queue": [],
+          "activeBatchId": null,
+          "completedBatches": 144,
+          "stopMinutes": 0,
+          "blockedMinutes": 0,
+          "starvedMinutes": 52.8
+        },
+        {
+          "id": "bonding",
+          "name": "접착",
+          "cycleMinutes": 3.05,
+          "queueCapacity": 3,
+          "status": "running",
+          "progress": 0.9289617486338798,
+          "queue": [],
+          "activeBatchId": "B144",
+          "completedBatches": 143,
+          "stopMinutes": 0,
+          "blockedMinutes": 0.6,
+          "starvedMinutes": 40.416666666666664
+        },
+        {
+          "id": "press",
+          "name": "압착",
+          "cycleMinutes": 3.1,
+          "queueCapacity": 3,
+          "status": "running",
+          "progress": 0.9731182795698925,
+          "queue": [
+            "B142",
+            "B143"
+          ],
+          "activeBatchId": "B141",
+          "completedBatches": 140,
+          "stopMinutes": 22.616666666666667,
+          "blockedMinutes": 0,
+          "starvedMinutes": 20.366666666666667
+        },
+        {
+          "id": "inspect",
+          "name": "검사·포장",
+          "cycleMinutes": 2.5,
+          "queueCapacity": 3,
+          "status": "starved",
+          "progress": 0,
+          "queue": [],
+          "activeBatchId": null,
+          "completedBatches": 140,
+          "stopMinutes": 0,
+          "blockedMinutes": 0,
+          "starvedMinutes": 130
+        }
+      ],
+      "tokens": [
+        {
+          "id": "B144",
+          "stationIndex": 3,
+          "kind": "active",
+          "queueIndex": 0,
+          "progress": 0.9289617486338798
+        },
+        {
+          "id": "B142",
+          "stationIndex": 4,
+          "kind": "queue",
+          "queueIndex": 0,
+          "progress": 0
+        },
+        {
+          "id": "B143",
+          "stationIndex": 4,
+          "kind": "queue",
+          "queueIndex": 1,
+          "progress": 0
+        },
+        {
+          "id": "B141",
+          "stationIndex": 4,
+          "kind": "active",
+          "queueIndex": 0,
+          "progress": 0.9731182795698925
+        }
+      ],
+      "reasonMinutes": [
+        {
+          "reason": "자재 공급 중단",
+          "minutes": 76.9
+        },
+        {
+          "reason": "압착 설비 정지",
+          "minutes": 22.616666666666667
+        },
+        {
+          "reason": "후공정 막힘",
+          "minutes": 0.6
+        },
+        {
+          "reason": "자재·전공정 대기",
+          "minutes": 320.28333333333336
+        }
+      ]
+    }
+  },
+  {
+    "label": "검사 강화만",
+    "config": {
+      "seed": 20261007,
+      "model": "FLEX",
+      "materialReduction": 0,
+      "balanceReduction": 0,
+      "qualityGuard": true
+    },
+    "final": {
+      "minute": 480,
+      "producedPairs": 1250,
+      "goodPairs": 1225,
+      "rejectedPairs": 25,
+      "releasedPairs": 1400,
+      "wipPairs": 150,
+      "planPairs": 1440,
+      "attainmentPct": 86.80555555555556,
+      "qualityPct": 98,
+      "goodPairsPerPersonHour": 12.760416666666666,
+      "downtimeMinutes": 99.51666666666667,
+      "stations": [
+        {
+          "id": "kit",
+          "name": "자재공급",
+          "cycleMinutes": 2.7,
+          "queueCapacity": 3,
+          "status": "running",
+          "progress": 0.2962962962962963,
+          "queue": [
+            "B138",
+            "B139",
+            "B140"
+          ],
+          "activeBatchId": "B137",
+          "completedBatches": 136,
+          "stopMinutes": 76.9,
+          "blockedMinutes": 35.1,
+          "starvedMinutes": 0
+        },
+        {
+          "id": "upper",
+          "name": "갑피준비",
+          "cycleMinutes": 2.9,
+          "queueCapacity": 3,
+          "status": "running",
+          "progress": 0.27586206896551724,
+          "queue": [
+            "B134",
+            "B135",
+            "B136"
+          ],
+          "activeBatchId": "B133",
+          "completedBatches": 132,
+          "stopMinutes": 0,
+          "blockedMinutes": 83.8,
+          "starvedMinutes": 12.6
+        },
+        {
+          "id": "lasting",
+          "name": "성형",
+          "cycleMinutes": 3.7,
+          "queueCapacity": 3,
+          "status": "running",
+          "progress": 0.21621621621621623,
+          "queue": [
+            "B130",
+            "B131",
+            "B132"
+          ],
+          "activeBatchId": "B129",
+          "completedBatches": 128,
+          "stopMinutes": 0,
+          "blockedMinutes": 0,
+          "starvedMinutes": 5.6
+        },
+        {
+          "id": "bonding",
+          "name": "접착",
+          "cycleMinutes": 3.05,
+          "queueCapacity": 3,
+          "status": "running",
+          "progress": 0.2622950819672131,
+          "queue": [],
+          "activeBatchId": "B128",
+          "completedBatches": 127,
+          "stopMinutes": 0,
+          "blockedMinutes": 0,
+          "starvedMinutes": 91.85
+        },
+        {
+          "id": "press",
+          "name": "압착",
+          "cycleMinutes": 3.1,
+          "queueCapacity": 3,
+          "status": "running",
+          "progress": 0.467741935483871,
+          "queue": [],
+          "activeBatchId": "B127",
+          "completedBatches": 126,
+          "stopMinutes": 22.616666666666667,
+          "blockedMinutes": 0,
+          "starvedMinutes": 65.33333333333333
+        },
+        {
+          "id": "inspect",
+          "name": "검사·포장",
+          "cycleMinutes": 2.8,
+          "queueCapacity": 3,
+          "status": "running",
+          "progress": 0.7321428571428572,
+          "queue": [],
+          "activeBatchId": "B126",
+          "completedBatches": 125,
+          "stopMinutes": 0,
+          "blockedMinutes": 0,
+          "starvedMinutes": 127.95
+        }
+      ],
+      "tokens": [
+        {
+          "id": "B138",
+          "stationIndex": 0,
+          "kind": "queue",
+          "queueIndex": 0,
+          "progress": 0
+        },
+        {
+          "id": "B139",
+          "stationIndex": 0,
+          "kind": "queue",
+          "queueIndex": 1,
+          "progress": 0
+        },
+        {
+          "id": "B140",
+          "stationIndex": 0,
+          "kind": "queue",
+          "queueIndex": 2,
+          "progress": 0
+        },
+        {
+          "id": "B137",
+          "stationIndex": 0,
+          "kind": "active",
+          "queueIndex": 0,
+          "progress": 0.2962962962962963
+        },
+        {
+          "id": "B134",
+          "stationIndex": 1,
+          "kind": "queue",
+          "queueIndex": 0,
+          "progress": 0
+        },
+        {
+          "id": "B135",
+          "stationIndex": 1,
+          "kind": "queue",
+          "queueIndex": 1,
+          "progress": 0
+        },
+        {
+          "id": "B136",
+          "stationIndex": 1,
+          "kind": "queue",
+          "queueIndex": 2,
+          "progress": 0
+        },
+        {
+          "id": "B133",
+          "stationIndex": 1,
+          "kind": "active",
+          "queueIndex": 0,
+          "progress": 0.27586206896551724
+        },
+        {
+          "id": "B130",
+          "stationIndex": 2,
+          "kind": "queue",
+          "queueIndex": 0,
+          "progress": 0
+        },
+        {
+          "id": "B131",
+          "stationIndex": 2,
+          "kind": "queue",
+          "queueIndex": 1,
+          "progress": 0
+        },
+        {
+          "id": "B132",
+          "stationIndex": 2,
+          "kind": "queue",
+          "queueIndex": 2,
+          "progress": 0
+        },
+        {
+          "id": "B129",
+          "stationIndex": 2,
+          "kind": "active",
+          "queueIndex": 0,
+          "progress": 0.21621621621621623
+        },
+        {
+          "id": "B128",
+          "stationIndex": 3,
+          "kind": "active",
+          "queueIndex": 0,
+          "progress": 0.2622950819672131
+        },
+        {
+          "id": "B127",
+          "stationIndex": 4,
+          "kind": "active",
+          "queueIndex": 0,
+          "progress": 0.467741935483871
+        },
+        {
+          "id": "B126",
+          "stationIndex": 5,
+          "kind": "active",
+          "queueIndex": 0,
+          "progress": 0.7321428571428572
+        }
+      ],
+      "reasonMinutes": [
+        {
+          "reason": "자재 공급 중단",
+          "minutes": 76.9
+        },
+        {
+          "reason": "압착 설비 정지",
+          "minutes": 22.616666666666667
+        },
+        {
+          "reason": "후공정 막힘",
+          "minutes": 118.9
+        },
+        {
+          "reason": "자재·전공정 대기",
+          "minutes": 303.3333333333333
+        }
+      ]
+    }
+  },
+  {
+    "label": "세 가정 함께",
+    "config": {
+      "seed": 20261007,
+      "model": "FLEX",
+      "materialReduction": 60,
+      "balanceReduction": 20,
+      "qualityGuard": true
+    },
+    "final": {
+      "minute": 480,
+      "producedPairs": 1420,
+      "goodPairs": 1388,
+      "rejectedPairs": 32,
+      "releasedPairs": 1440,
+      "wipPairs": 20,
+      "planPairs": 1440,
+      "attainmentPct": 98.61111111111111,
+      "qualityPct": 97.74647887323944,
+      "goodPairsPerPersonHour": 14.458333333333334,
+      "downtimeMinutes": 53.36666666666667,
+      "stations": [
+        {
+          "id": "kit",
+          "name": "자재공급",
+          "cycleMinutes": 2.7,
+          "queueCapacity": 3,
+          "status": "starved",
+          "progress": 0,
+          "queue": [],
+          "activeBatchId": null,
+          "completedBatches": 144,
+          "stopMinutes": 30.75,
+          "blockedMinutes": 12.933333333333334,
+          "starvedMinutes": 47.516666666666666
+        },
+        {
+          "id": "upper",
+          "name": "갑피준비",
+          "cycleMinutes": 2.9,
+          "queueCapacity": 3,
+          "status": "starved",
+          "progress": 0,
+          "queue": [],
+          "activeBatchId": null,
+          "completedBatches": 144,
+          "stopMinutes": 0,
+          "blockedMinutes": 20.416666666666668,
+          "starvedMinutes": 41.983333333333334
+        },
+        {
+          "id": "lasting",
+          "name": "성형",
+          "cycleMinutes": 2.966666666666667,
+          "queueCapacity": 3,
+          "status": "starved",
+          "progress": 0,
+          "queue": [],
+          "activeBatchId": null,
+          "completedBatches": 144,
+          "stopMinutes": 0,
+          "blockedMinutes": 23.033333333333335,
+          "starvedMinutes": 29.766666666666666
+        },
+        {
+          "id": "bonding",
+          "name": "접착",
+          "cycleMinutes": 3.05,
+          "queueCapacity": 3,
+          "status": "starved",
+          "progress": 0,
+          "queue": [],
+          "activeBatchId": null,
+          "completedBatches": 144,
+          "stopMinutes": 0,
+          "blockedMinutes": 20.466666666666665,
+          "starvedMinutes": 20.333333333333332
+        },
+        {
+          "id": "press",
+          "name": "압착",
+          "cycleMinutes": 3.1,
+          "queueCapacity": 3,
+          "status": "running",
+          "progress": 0.7956989247311828,
+          "queue": [],
+          "activeBatchId": "B144",
+          "completedBatches": 143,
+          "stopMinutes": 22.616666666666667,
+          "blockedMinutes": 0,
+          "starvedMinutes": 11.616666666666667
+        },
+        {
+          "id": "inspect",
+          "name": "검사·포장",
+          "cycleMinutes": 2.8,
+          "queueCapacity": 3,
+          "status": "running",
+          "progress": 0.8809523809523809,
+          "queue": [],
+          "activeBatchId": "B143",
+          "completedBatches": 142,
+          "stopMinutes": 0,
+          "blockedMinutes": 0,
+          "starvedMinutes": 79.93333333333334
+        }
+      ],
+      "tokens": [
+        {
+          "id": "B144",
+          "stationIndex": 4,
+          "kind": "active",
+          "queueIndex": 0,
+          "progress": 0.7956989247311828
+        },
+        {
+          "id": "B143",
+          "stationIndex": 5,
+          "kind": "active",
+          "queueIndex": 0,
+          "progress": 0.8809523809523809
+        }
+      ],
+      "reasonMinutes": [
+        {
+          "reason": "자재 공급 중단",
+          "minutes": 30.75
+        },
+        {
+          "reason": "압착 설비 정지",
+          "minutes": 22.616666666666667
+        },
+        {
+          "reason": "후공정 막힘",
+          "minutes": 76.85
+        },
+        {
+          "reason": "자재·전공정 대기",
+          "minutes": 231.15
+        }
+      ]
+    }
+  }
+]
