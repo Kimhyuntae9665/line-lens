@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "evidenceScope": "Actual Chrome DOM and screenshot observation; rounded UI timings, not provider raw response capture.",
+  "dateKst": "2026-10-09",
+  "model": "Qwen3-4B-Q4_K_M",
+  "device": "CPU",
+  "prompt": "직원들이 무리하지 않으면서 양품 1,000켤레를 더 빨리 만들고 싶어",
+  "llmCalled": true,
+  "synthetic": true,
+  "goalConfirmed": true,
+  "evaluated": 504,
+  "eligible": 288,
+  "qualityFiltered": 0,
+  "burdenFiltered": 216,
+  "timingSeconds": {
+    "simulator": 2.61,
+    "interpretation": 20.73,
+    "reasonSelection": 45.35
+  },
+  "baseline": {
+    "minutesToTarget": 409,
+    "total": 1250,
+    "good": 1191,
+    "workers": 12
+  },
+  "candidates": [
+    {
+      "category": "fast",
+      "minutesToTarget": 345,
+      "total": 1430,
+      "good": 1396,
+      "workers": 15,
+      "goodPairsPerPersonHour": 11.63
+    },
+    {
+      "category": "small-change",
+      "minutesToTarget": 400,
+      "total": 1250,
+      "good": 1225,
+      "workers": 12,
+      "goodPairsPerPersonHour": 12.76
+    },
+    {
+      "category": "low-load",
+      "minutesToTarget": 407,
+      "total": 1260,
+      "good": 1201,
+      "workers": 15,
+      "goodPairsPerPersonHour": 10.01
+    }
+  ],
+  "application": {
+    "verified": true,
+    "materialReduction": 60,
+    "balanceReduction": 25,
+    "qualityGuard": true,
+    "manualWorkers": 3,
+    "pacePercent": 100,
+    "breakEveryMinutes": 90,
+    "breakMinutes": 5,
+    "playbackPreserved": true
+  },
+  "cautions": [
+    "One observed run, not average or guaranteed latency.",
+    "Fictional workload/fatigue metrics, not accident probability or safety validation."
+  ]
+}

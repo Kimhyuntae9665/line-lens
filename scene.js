@@ -8,7 +8,7 @@ const COLORS = {
   white: 0xfafcfc, yellow: 0xf5c441, teal: 0x26a991, coral: 0xeb694b,
   blue: 0x397dcd, muted: 0x71838e, kraft: 0xc39966,
 };
-const STATES = { running: COLORS.teal, starved: 0x9aa9b3, blocked: COLORS.yellow, stopped: COLORS.coral };
+const STATES = { running: COLORS.teal, starved: 0x9aa9b3, blocked: COLORS.yellow, stopped: COLORS.coral, resting: 0x9467c5 };
 const CELLS = [
   { x: -8.2, z: -3.5, label: '자재 공급', code: '01 / MATERIAL' },
   { x: 0, z: -3.5, label: '갑피 준비', code: '02 / UPPER' },
@@ -235,7 +235,7 @@ export class FactoryScene {
     }
     group.add(selection);
     const lamp = this._statusLight(group, -2.88, -1.68);
-    const cell = { group, heat, selection, lamp, robots: [], index };
+    const cell = { group, heat, selection, lamp, robots: [], workers: [], index };
     this.cells.push(cell);
     this._label(group, def, index);
     // Equipment is kept behind each belt, exposing active batches from above.
@@ -245,6 +245,10 @@ export class FactoryScene {
     if (index === 3) this._bonding(group, cell);
     if (index === 4) this._press(group, cell);
     if (index === 5) this._packing(group, cell);
+    if ([1,3,5].includes(index)) {
+      for(let n=0;n<3;n++){const worker=this._worker(group,-2.5+n*.9,1.15,Math.PI);worker.scale.setScalar(.68);cell.workers.push(worker);}
+      cell.humanBadge=this._humanBadge(group,index);
+    }
     // All equipment descendants participate in picking, including robot arms.
     group.traverse(object => {
       if (object.isMesh && object !== heat && object !== pick && !selection.children.includes(object)) {
@@ -456,7 +460,6 @@ export class FactoryScene {
     this._box(parent, COLORS.blue, [-1.9, 1.28, -1.63], [0.85, 0.65, 0.08]);
     this._box(parent, COLORS.dark, [-1.9, 0.99, -1.63], [0.11, 0.35, 0.13]);
     this._box(parent, 0xb5e5da, [-1.9, 1.28, -1.578], [0.72, 0.5, 0.02]);
-    this._worker(parent, -2.15, 0.04, -1.5);
     this._controlPanel(parent, 2.52, -0.75);
   }
 
@@ -502,7 +505,22 @@ export class FactoryScene {
     this._box(worker, COLORS.yellow, [0, 1.03, 0.146], [0.34, 0.51, 0.025]);
     this._sphere(worker, 0xe4b899, [0, 1.52, 0], [0.2, 0.23, 0.19]);
     this._sphere(worker, COLORS.white, [0, 1.69, 0], [0.23, 0.14, 0.22]);
-    this._cyl(worker, COLORS.white, [0, 1.67, 0], [0.52, 0.035, 0.48]);
+    this._cyl(worker, COLORS.white, [0, 1.67, 0], [0.52, 0.035, 0.48]);return worker;
+  }
+
+  _humanBadge(parent,index) {
+    const canvas=document.createElement('canvas');canvas.width=640;canvas.height=100;
+    const texture=new THREE.CanvasTexture(canvas);texture.colorSpace=THREE.SRGBColorSpace;this.textures.add(texture);
+    const material=new THREE.SpriteMaterial({map:texture,transparent:true,depthTest:false});this.materials.set(`human-badge-${index}`,material);
+    const sprite=new THREE.Sprite(material);sprite.position.set(0,3.55,.6);sprite.scale.set(5.2,.81,1);sprite.renderOrder=10;parent.add(sprite);
+    return {canvas,texture,sprite,text:null};
+  }
+
+  _paintHuman(cell,human,enabled){
+    cell.workers.forEach((worker,n)=>{worker.visible=!enabled?n<2:n<(human?.assignedWorkers??2);worker.rotation.y=human?.onBreak?Math.PI/2:Math.PI;});
+    const badge=cell.humanBadge;if(!badge)return;badge.sprite.visible=enabled;
+    if(!enabled)return;const text=`${human.assignedWorkers}명 · 피로 ${Math.round(human.fatigueScore)} · 부하 ${Math.round(human.workloadPct)}%${human.onBreak?' · 휴식':''}`;
+    if(badge.text===text)return;badge.text=text;const ctx=badge.canvas.getContext('2d');ctx.clearRect(0,0,640,100);ctx.fillStyle=human.onBreak?'#744bad':'#ffffff';ctx.fillRect(0,0,640,100);ctx.strokeStyle=human.onBreak?'#513379':'#586f81';ctx.lineWidth=4;ctx.strokeRect(2,2,636,96);ctx.fillStyle=human.onBreak?'#ffffff':'#243847';ctx.font='600 40px system-ui,"Malgun Gothic",sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(text,320,50);badge.texture.needsUpdate=true;
   }
 
   _periphery(parent) {
@@ -556,14 +574,14 @@ export class FactoryScene {
     this.cells.forEach((cell, index) => {
       const station = stations[index];
       const status = station?.status || 'starved';
-      const color = STATES[status] || COLORS.muted;
+      const color = STATES[status] || COLORS.muted;this._paintHuman(cell,station?.human,snapshot?.human?.enabled);
       cell.selection.visible = index === this.selectedIndex;
       cell.heat.material.color.setHex(color);
       cell.heat.material.opacity = heatmap ? 0.16 : 0;
       cell.lamp.material.color.setHex(color);
       cell.lamp.material.emissive.setHex(color);
       cell.lamp.material.emissiveIntensity = status === 'running' ? 0.4 : 0.12;
-      const active = Boolean(station?.activeBatchId);
+      const active = status==='running' && Boolean(station?.activeBatchId);
       const p = Math.max(0, Math.min(1, Number(station?.progress) || 0));
       const phase = active ? Math.sin(p * Math.PI * 2) : 0;
       cell.robots.forEach((robot, robotIndex) => {
